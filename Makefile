@@ -1,11 +1,10 @@
 NAME = pipex
 
 SRCS = pipex.c \
-	   libft_utils.c \
-	   libft_utils2.c \
+	   pipex_utils.c \
 	   ft_split.c \
-	   ft_strjoin.c \
-	   ft_strncmp.c
+	   libft_utils.c \
+	   libft_utils2.c
 
 OBJECTS = $(SRCS:.c=.o)
 
@@ -19,7 +18,7 @@ CFLAGS += -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	gcc $(CFLAGS) $(OBJECTS) -o $(NAME)
+	gcc  $(CFLAGS) $(OBJECTS) -o $(NAME)
 
 clean:
 	@rm -f $(OBJECTS)

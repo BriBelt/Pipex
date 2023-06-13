@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:45:44 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/12 15:13:14 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:16:02 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,27 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (0);
 	ft_strlcpy(sbstr, s + start, len + 1);
 	return (sbstr);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*newstr;
+	char	*ptr;
+	size_t	newssize;
+	size_t	lens1;
+	size_t	lens2;
+
+	lens1 = ft_strlen(s1);
+	lens2 = ft_strlen(s2);
+	newssize = lens1 + lens2;
+	newstr = malloc((newssize + 1) * sizeof(char));
+	ptr = newstr;
+	if (!newstr)
+		return (0);
+	while (*s1)
+		*newstr++ = *s1++;
+	while (*s2)
+		*newstr++ = *s2++;
+	*newstr = '\0';
+	return (ptr);
 }
