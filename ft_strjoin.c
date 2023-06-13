@@ -6,11 +6,13 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:54:43 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/12 17:42:57 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:00:32 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+//#include "pipex.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

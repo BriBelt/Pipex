@@ -4,7 +4,8 @@ SRCS = pipex.c \
 	   libft_utils.c \
 	   libft_utils2.c \
 	   ft_split.c \
-	   ft_strlen.c
+	   ft_strjoin.c \
+	   ft_strncmp.c
 
 OBJECTS = $(SRCS:.c=.o)
 
@@ -21,6 +22,9 @@ $(NAME): $(OBJECTS)
 	gcc $(CFLAGS) $(OBJECTS) -o $(NAME)
 
 clean:
+	@rm -f $(OBJECTS)
+
+fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
