@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:27:46 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/14 16:46:08 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:53:46 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,13 @@ void	execute_p(char **argv, char **envp)
 	child1_pr(pipex, envp);
 // 2nd child process
 	pipex.PATH = get_path(envp);
+}
+
+void	read_my_file(char **argv, int fd, t_pipex pipex)
+{
+	char	*wasread;
+
+	wasread = get_next_line(fd);
+
+
 }
