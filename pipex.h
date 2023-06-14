@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:28:02 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/13 17:45:54 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:48:55 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,34 @@
 typedef	struct	s_pipex
 {
 	pid_t	child1;
+//	1st child process id
 	pid_t	child2;
+//	2st child process id
 	int		pipefd[2];
-	int		fd1;
-	int		fd2;
-	char	*mainpath;
+//	Fd of both ends of the pipe
+//	pipefd[0] - read
+//	pipefd[1] - write
+	int		readfile;
+//	Fd of readfile
+	int		writefile;
+//	Fd of writefile
+	char	*PATH;
+//	String with the whole PATH= (without that part)
 	char	*cpath;
+//	String of the path where the command is
+	char	**cmds;
+//	Array of strings of all the commands (EX: cmds[0] = "ls", cmds[1] = "-l")
 }			t_pipex;
 
+/* Child processes */
+void	child1_pr(t_pipex pipex, char **envp);
+void	child2_pr(t_pipex pipex, char **envp);
 /*	Pipex utils */
 char	*get_command(char *pathname);
 char	*get_path(char **envp);
+void	error_check(t_pipex pipex);
+void	free_array(char **array);
+void	exit_error(char *str, int errnb);
 /*	Libft utils */
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);

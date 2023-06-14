@@ -2,6 +2,7 @@ NAME = pipex
 
 SRCS = pipex.c \
 	   pipex_utils.c \
+	   children.c \
 	   ft_split.c \
 	   libft_utils.c \
 	   libft_utils2.c
