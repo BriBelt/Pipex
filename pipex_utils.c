@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:26:18 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/14 17:32:10 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:30:37 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*get_path(char **envp)
 		i++;
 	}
 	exit_error("Path not found\n", -1);
+	return (NULL);
 }
 
 char	*get_commandpath(t_pipex pipex, char *command)
@@ -52,6 +53,7 @@ char	*get_commandpath(t_pipex pipex, char *command)
 	}
 	free_array(paths);
 	exit_error("Command not found\n", -1);
+	return (NULL);
 }
 
 void	free_array(char **array)

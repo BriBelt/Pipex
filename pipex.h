@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:28:02 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/14 16:48:55 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:23:31 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,14 @@ typedef	struct	s_pipex
 //	Array of strings of all the commands (EX: cmds[0] = "ls", cmds[1] = "-l")
 }			t_pipex;
 
+void	execute_p(char **argv, char **envp);
 /* Child processes */
-void	child1_pr(t_pipex pipex, char **envp);
-void	child2_pr(t_pipex pipex, char **envp);
+void	child1_pr(t_pipex pipex, char **argv, char **envp);
+void	child2_pr(t_pipex pipex, char **argv, char **envp);
 /*	Pipex utils */
-char	*get_command(char *pathname);
+//char	*get_command(char *pathname);
 char	*get_path(char **envp);
-void	error_check(t_pipex pipex);
+char	*get_commandpath(t_pipex pipex, char *command);
 void	free_array(char **array);
 void	exit_error(char *str, int errnb);
 /*	Libft utils */
