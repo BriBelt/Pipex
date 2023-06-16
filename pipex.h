@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:28:02 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/16 15:11:56 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/16 16:29:22 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	child2_pr(t_pipex pipex, char **argv, char **envp);
 char	*get_path(char **envp);
 char	*get_commandpath(t_pipex pipex, char *command);
 void	free_array(char **array);
-void	exit_error(void);
+void	exit_error(char *err);
 //void	exit_error(char *str, int errnb);
 /*	Libft utils */
 void	ft_bzero(void *s, size_t n);
