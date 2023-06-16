@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:27:46 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/16 11:59:51 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/16 15:22:11 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv, char **envp)
 		exit (0);
 	}
 	if (!envp || envp[0] == NULL)
-		exit_error("PATH not found", -1);
+		exit_error();
 	execute_p(argv, envp);
 	exit(0);
 }
@@ -30,15 +30,15 @@ void	execute_p(char **argv, char **envp)
 	t_pipex	pipex;
 	
 	pipex.PATH = get_path(envp);
-	pipex.readfile = open(argv[1], O_RDONLY, 0777);
+	pipex.readfile = open(argv[1], O_RDONLY);
 	pipex.writefile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (pipex.readfile == -1 || pipex.writefile == -1)
-		exit_error("File\n", -1);
+		exit_error();
 	if (pipe(pipex.pipefd) == -1) // create pipe and check for errors
 	{
 		close(pipex.pipefd[0]);
 		close(pipex.pipefd[1]);
-		exit_error("Pipe\n", -1);
+		exit_error();
 	}
 	pipex.child1 = fork();
 	if (pipex.child1 == 0)

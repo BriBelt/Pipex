@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:26:18 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/16 11:30:37 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/16 15:24:03 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,18 @@ char	*get_path(char **envp)
 
 	i = 0;
 	if (!envp || envp[0][0] == '\0')
-		exit_error("Path not found\n", -1);
+		exit_error();
+//		exit_error("Path not found\n", -1);
+//		perror(0);
 	while (envp[i])
 	{
 		if (ft_strncmp("PATH", envp[i], 4) == 0)
 			return (envp[i] + 5);
 		i++;
 	}
-	exit_error("Path not found\n", -1);
+	exit_error();
+//	exit_error("Path not found\n", -1);
+//	perror(0);
 	return (NULL);
 }
 
@@ -52,7 +56,9 @@ char	*get_commandpath(t_pipex pipex, char *command)
 		i++;
 	}
 	free_array(paths);
-	exit_error("Command not found\n", -1);
+	exit_error();
+//	exit_error("Command not found\n", -1);
+//	perror(0);
 	return (NULL);
 }
 
@@ -69,8 +75,14 @@ void	free_array(char **array)
 	free(array);
 }
 
+void	exit_error(void)
+{
+	printf("Error: %s \n", strerror(errno));
+	exit(errno);
+}
+/*
 void	exit_error(char *str, int errnb)
 {
 	perror(str);
 	exit(errnb);
-}
+}*/
