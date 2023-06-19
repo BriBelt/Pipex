@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:26:18 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/16 16:29:04 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:57:45 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,14 @@ char	*get_path(char **envp)
 
 	i = 0;
 	if (!envp || envp[0][0] == '\0')
-		exit_error("PATH not found\n");
-//		exit_error("Path not found\n", -1);
-//		perror(0);
+		exit_error("PATH not found");
 	while (envp[i])
 	{
 		if (ft_strncmp("PATH", envp[i], 4) == 0)
 			return (envp[i] + 5);
 		i++;
 	}
-	exit_error("PATH not found\n");
-//	exit_error("Path not found\n", -1);
-//	perror(0);
+	exit_error("PATH not found");
 	return (NULL);
 }
 
@@ -41,7 +37,7 @@ char	*get_commandpath(t_pipex pipex, char *command)
 	int		i;
 
 	i = 0;
-	paths = ft_split(pipex.PATH, ':');
+	paths = ft_split(pipex.path,':');
 	while (paths[i])
 	{
 		tmp = ft_strjoin(paths[i], "/");
@@ -56,9 +52,7 @@ char	*get_commandpath(t_pipex pipex, char *command)
 		i++;
 	}
 	free_array(paths);
-	exit_error("Non valid command\n");
-//	exit_error("Command not found\n", -1);
-//	perror(0);
+	exit_error("Command not found");
 	return (NULL);
 }
 
@@ -78,17 +72,5 @@ void	free_array(char **array)
 void	exit_error(char *err)
 {
 	perror(err);
-	exit(1);
+	exit(errno);
 }
-/*void	exit_error(void)
-{
-	ft_putstr_fd(strerror(errno), 2);
-//	printf("Error: %s \n", strerror(errno));
-	exit(-1);
-}*/
-/*
-void	exit_error(char *str, int errnb)
-{
-	perror(str);
-	exit(errnb);
-}*/
