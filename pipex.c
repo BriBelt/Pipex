@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:27:46 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/20 12:05:23 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:21:47 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	execute_p(char **argv, char **envp)
 	if (pipex.writefile < 0)
 	{
 		close(pipex.readfile);
-		exit_error("Could not create file");
+		exit_error(argv[4]);
 	}
 	if (pipe(pipex.pipefd) == -1)
 	{
