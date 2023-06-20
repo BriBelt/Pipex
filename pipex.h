@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:28:02 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/20 11:08:06 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:43:36 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char	*get_path(char **envp);
 char	*get_commandpath(t_pipex pipex, char *command);
 void	free_array(char **array);
 void	exit_error(char *err);
+void	closethempipes(t_pipex pipex, int mode);
 /*	Libft utils */
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);

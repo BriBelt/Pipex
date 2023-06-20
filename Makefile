@@ -11,7 +11,7 @@ OBJECTS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS += -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS += -Wall -Wextra -Werror
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:27:46 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/19 18:20:13 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:05:23 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,20 @@ void	execute_p(char **argv, char **envp)
 		exit_error(argv[1]);
 	pipex.writefile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (pipex.writefile < 0)
+	{
+		close(pipex.readfile);
 		exit_error("Could not create file");
+	}
 	if (pipe(pipex.pipefd) == -1)
 	{
-		close(pipex.pipefd[0]);
-		close(pipex.pipefd[1]);
+		closethempipes(pipex, 0);
+		closethempipes(pipex, 1);
 		exit_error("Error creating the pipe");
 	}
-	pipex.child1 = fork();
-	if (pipex.child1 == 0)
-		child1_pr(pipex, argv, envp);
-	pipex.child2 = fork();
-	if (pipex.child2 == 0)
-		child2_pr(pipex, argv, envp);
-	close(pipex.pipefd[0]);
-	close(pipex.pipefd[1]);
+	child1_pr(pipex, argv, envp);
+	child2_pr(pipex, argv, envp);
+	closethempipes(pipex, 0);
 	waitpid(pipex.child1, NULL, 0);
 	waitpid(pipex.child2, NULL, 0);
-	close(pipex.readfile);
-	close(pipex.writefile);
+	closethempipes(pipex, 1);
 }

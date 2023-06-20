@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:26:18 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/20 11:33:08 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:05:26 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*get_commandpath(t_pipex pipex, char *command)
 	if (ft_strrchr(command, '/') != NULL)
 		command = ft_strrchr(command, '/');
 	i = 0;
-	paths = ft_split(pipex.path,':');
+	paths = ft_split(pipex.path, ':');
 	while (paths[i])
 	{
 		tmp = ft_strjoin(paths[i], "/");
@@ -50,7 +50,21 @@ char	*get_commandpath(t_pipex pipex, char *command)
 		free(commandpath);
 		i++;
 	}
-	return(free_array(paths), exit_error("Command not found"), NULL);
+	return (free_array(paths), exit_error("Command not found"), NULL);
+}
+
+void	closethempipes(t_pipex pipex, int mode)
+{
+	if (mode == 0)
+	{
+		close(pipex.pipefd[0]);
+		close(pipex.pipefd[1]);
+	}
+	else if (mode == 1)
+	{
+		close(pipex.readfile);
+		close(pipex.writefile);
+	}
 }
 
 void	free_array(char **array)
