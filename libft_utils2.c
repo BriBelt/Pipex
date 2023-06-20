@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 11:45:44 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/13 17:16:02 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:30:00 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,18 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		*newstr++ = *s2++;
 	*newstr = '\0';
 	return (ptr);
+}
+
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
+
+	i = ft_strlen((char *)s);
+	while (i >= 0)
+	{
+		if (s[i] == (char)c && s[i + 1])
+			return (&((char *)s)[i + 1]);
+		i--;
+	}
+	return (0);
 }

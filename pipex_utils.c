@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:26:18 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/19 17:57:45 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:33:08 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	*get_commandpath(t_pipex pipex, char *command)
 	char	*tmp;
 	int		i;
 
+	if (ft_strrchr(command, '/') != NULL)
+		command = ft_strrchr(command, '/');
 	i = 0;
 	paths = ft_split(pipex.path,':');
 	while (paths[i])
@@ -44,16 +46,11 @@ char	*get_commandpath(t_pipex pipex, char *command)
 		commandpath = ft_strjoin(tmp, command);
 		free(tmp);
 		if (access(commandpath, F_OK | X_OK) == 0)
-		{
-			free_array(paths);
-			return (commandpath);
-		}
+			return (free_array(paths), commandpath);
 		free(commandpath);
 		i++;
 	}
-	free_array(paths);
-	exit_error("Command not found");
-	return (NULL);
+	return(free_array(paths), exit_error("Command not found"), NULL);
 }
 
 void	free_array(char **array)
@@ -72,5 +69,5 @@ void	free_array(char **array)
 void	exit_error(char *err)
 {
 	perror(err);
-	exit(errno);
+	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:27:46 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/19 18:01:35 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:20:13 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	execute_p(char **argv, char **envp)
 	pipex.path = get_path(envp);
 	pipex.readfile = open(argv[1], O_RDONLY);
 	if (pipex.readfile < 0)
-		exit_error("Non-valid file");
+		exit_error(argv[1]);
 	pipex.writefile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (pipex.writefile < 0)
 		exit_error("Could not create file");
