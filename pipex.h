@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:28:02 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/20 11:43:36 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:46:24 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	execute_p(char **argv, char **envp);
 /* Child processes */
 void	child1_pr(t_pipex pipex, char **argv, char **envp);
 void	child2_pr(t_pipex pipex, char **argv, char **envp);
+int		especific(t_pipex pipex, char *command);
 /*	Pipex utils */
 char	*get_path(char **envp);
 char	*get_commandpath(t_pipex pipex, char *command);

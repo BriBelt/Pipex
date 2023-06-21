@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:27:46 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/20 12:21:47 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:39:48 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	main(int argc, char **argv, char **envp)
 		ft_putstr_fd("Usage: ./pipex file1 \"cmd1\" \"cmd2\" file2\n", 1);
 		exit (0);
 	}
-	if (!envp || envp[0] == NULL)
-		exit_error("No ENVP found");
 	execute_p(argv, envp);
 	return (0);
 }
