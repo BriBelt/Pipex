@@ -6,7 +6,7 @@
 /*   By: bbeltran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:26:18 by bbeltran          #+#    #+#             */
-/*   Updated: 2023/06/21 16:37:42 by bbeltran         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:44:08 by bbeltran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,39 +54,6 @@ char	*get_commandpath(t_pipex pipex, char *command)
 		commandpath = NULL;
 	return (commandpath);
 }
-
-/*char	*get_commandpath(t_pipex pipex, char *command)
-{
-	char	**paths;
-	char	*commandpath;
-	char	*tmp;
-	int		i;
-
-	if (pipex.path == NULL && !ft_strrchr(command, '/'))
-		return (exit_error(command), NULL);
-	if (pipex.path == NULL && ft_strrchr(command, '/'))
-	{
-		if (access(command, F_OK | X_OK) == -1)
-			return (exit_error(command), NULL);
-		else
-			return (command);
-	}
-	else if (pipex.path != NULL && ft_strrchr(command, '/'))
-		command = ft_strrchr(command, '/');
-	i = 0;
-	paths = ft_split(pipex.path, ':');
-	while (paths[i])
-	{
-		tmp = ft_strjoin(paths[i], "/");
-		commandpath = ft_strjoin(tmp, command);
-		free(tmp);
-		if (access(commandpath, F_OK | X_OK) == 0)
-			return (free_array(paths), commandpath);
-		free(commandpath);
-		i++;
-	}
-	return (NULL);
-}*/
 
 void	closethempipes(t_pipex pipex, int mode)
 {
